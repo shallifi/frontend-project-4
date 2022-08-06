@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
-import UserList from "./UserList";
+import UserList from "./EmployeeList";
 
 
-function Employee({onAddUser}) {
+function AddEmployee({onAddUser}) {
   
   /// used for controlled form vvvvvv
   const [formData, setFormData] = useState ({
@@ -52,9 +52,9 @@ function Employee({onAddUser}) {
             phone: ""
         });
       });
-      history.push(`employee/new`)
+      history.push('/employee/new')
     }
-    console.log("AddEmployee", formData)
+    // console.log("AddEmployee", formData)
   return (
     <form style={formStyle}  onSubmit={handleSubmit}>
     <div>
@@ -100,13 +100,13 @@ function Employee({onAddUser}) {
         value={formData.phone}/>
 
         <button type="submit">Submit New Employee Information</button>
-      {/* <UserList formData={formData} key={formData.id}/> */}
+      <UserList formData={formData} key={formData.name}/>
       </div>
     </form>
   )
 }
 
-export default Employee
+export default AddEmployee
 
 const formStyle = {
   display: "flex",
@@ -114,26 +114,26 @@ const formStyle = {
   width: "500px",
   margin: "0 auto",
   border: "2px solid var(--dark-turquoise)",
-  padding: "1.75rem",
+  // padding: "1.75rem",
   margintop: "0.25rem",
   marginbottom: "1rem",
   padding: "0.5rem",
-  border: "none",
+  // border: "none",
   fontsize: "1.25rem",
   fontweight: "bold",
   transition: "all 0.3s",
-  border: "2px solid var(--color)",
+  // border: "2px solid var(--color)",
   // color:"black"
 }
 
-const textArea = {
-  margintop: "0.25rem",
-  marginbottom: "1rem",
-  padding: "0.5rem",
-  border: "none",
-  fontsize: "1.25rem",
-  fontweight: "bold",
-  transition: "all 0.3s",
-  border: "2px solid var(--color)",
+// const textArea = {
+//   margintop: "0.25rem",
+//   marginbottom: "1rem",
+//   padding: "0.5rem",
+//   border: "none",
+//   fontsize: "1.25rem",
+//   fontweight: "bold",
+//   transition: "all 0.3s",
+//   border: "2px solid var(--color)",
 
-}
+// }

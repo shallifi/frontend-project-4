@@ -1,15 +1,15 @@
-import { hover } from '@testing-library/user-event/dist/hover';
+// import { hover } from '@testing-library/user-event/dist/hover';
 import React from 'react'
 import { NavLink } from 'react-router-dom';
 // import { Link } from 'react-router-dom'
 
 
 
-function NavBar() {
+function NavBar({colorT}) {
   return (
       <>
     <div className="nav">
-        <h3 className="project-title">NavBar</h3>
+        <h3 className="project-title" style={{color:colorT}}>NavBar</h3>
         
 
         <NavLink to="/restart" 
@@ -17,7 +17,7 @@ function NavBar() {
         activeStyle={{ background: "darkgreen", }}>
             <h3> Did you Restart?</h3>
           </NavLink>
-        <NavLink to="/computer" 
+        <NavLink to="/addticket" 
         exact style={boxButtonStyle} 
         activeStyle={{ background: "darkgreen", }}>
             <h3> Add Ticket</h3>

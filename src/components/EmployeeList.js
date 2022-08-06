@@ -1,10 +1,10 @@
 import { useState,useEffect } from "react";
-import AddEmployee from "react";
+// import AddEmployee from "react";
 
 
 
 
-function UserList() {
+function EmployeeList() {
   const [employee, setEmployee] = useState([])
   
   // const {name, department, manager, title, phone } = employee;
@@ -60,7 +60,7 @@ function UserList() {
 return (
     <div >
 
-        <h1>UserList</h1>
+        <h1>Employee List</h1>
           <ul>
           {displayEmploy}
           </ul>
@@ -78,4 +78,4 @@ return (
   )
 }
 
-export default UserList
+export default EmployeeList

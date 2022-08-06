@@ -108,4 +108,15 @@ button:hover {
 }
 
 
-
+.submit-button {
+/* button.active,
+button:focus, */
+button:hover {
+  color: red;
+  background-color: orange;
+  
+}
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

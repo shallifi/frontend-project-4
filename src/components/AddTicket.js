@@ -3,17 +3,17 @@ import { useHistory } from 'react-router-dom';
 
 
 
-function Computer({onAddTicket}) {
+function AddTicket({onAddTicket}) {
 
   ///setting a controlled form by using useState
   const [tickData,setTickData] = useState({
 
-    device:"",
-    problem:"" ,
+    common_issues:"",
+    devices:"" ,
     description:"" ,
-    tech:"" ,
-    solution:"" ,
-    status: ""
+    name:"" 
+    // solution:"" ,
+    // status: ""
 
   })
   // console.log(tickData)
@@ -35,25 +35,25 @@ function Computer({onAddTicket}) {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
-      body: JSON.stringify({ ...tickData }),
+      body: JSON.stringify( tickData ),
     };
-      fetch(`http://localhost:3000/tickets`, configObj)
+      fetch('http://127.0.0.1:3000/tickets', configObj)
         .then((resp) => resp.json())
         .then((tickInfo) => {
-          onAddTicket(tickInfo);
+          // onAddTicket(tickInfo);
           setTickData({
-            name:"",
-            device: "" ,
-            problem:"" ,
-            description:"" ,
-            tech:"" ,
-            solution:"" ,
-            status: ""
+            common_issues:"",
+            devices: "" ,
+            name:"" ,
+            description:"" 
+            // tech:"" ,
+            // solution:"" ,
+            // status: ""
         });
       });
-      history.push(`ticketlist`)
+      history.push("/ticketlist")
     }
-    console.log("addticket", tickData)
+    // console.log("addticket", tickData)
 
 
 
@@ -72,7 +72,8 @@ function Computer({onAddTicket}) {
       
        <h2 style={formStyle}>Common Issues</h2>
        <select className='drop-menu' style={formStyle}>
-        <option selected value="problem">Password</option>
+        <option value="problem"></option>
+        <option value="problem">Password</option>
         <option value="problem">Printer</option>
         <option value="problem">Connection</option>
         <option value="problem">Lost File</option>
@@ -103,18 +104,18 @@ function Computer({onAddTicket}) {
         name="description" 
         placeholder="A brief description"
         onChange={handleChange}
-        value={tickData.name}
+        value={tickData.description}
         />
 
 
-      <button type='submit' >Submit Ticket to Help Desk</button>
+      <button type='submit' style={submitButton}>Submit Ticket to Help Desk</button>
 
       </form>
     </section>
   )
 }
 
-export default Computer;
+export default AddTicket;
 
 const formStyle = {
   display: "flex",
@@ -122,17 +123,20 @@ const formStyle = {
   width: "500px",
   margin: "0 auto",
   border: "2px solid var(--dark-turquoise)",
-  padding: "1.75rem",
+  // padding: "1.75rem",
   margintop: "0.25rem",
   marginbottom: "1rem",
   padding: "0.5rem",
-  border: "none",
+  // border: "none",
   fontsize: "1.25rem",
   fontweight: "bold",
   transition: "all 0.3s",
-  border: "2px solid var(--color)",
+  // border: "2px solid var(--color)",
 }
 
 const submitButton = {
-
+  display: "flex",
+  flexdirection: "column",
+  alignitems: "center",
+  
 }

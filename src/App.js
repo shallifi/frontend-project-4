@@ -4,23 +4,36 @@ import NotFound from "./components/NotFound";
 import AddEmployee from "./components/AddEmployee";
 import AddTicket from "./components/AddTicket";
 import CellPhone from "./components/CellPhone";
-import UserList from "./components/UserList";
 import TicketList from "./components/TicketList";
 import { Link } from "react-router-dom";
 import Restart from "./components/Restart";
+import { useState } from "react";
+import EmployeeList from "./components/EmployeeList";
+
 
 
 
 
 function App() {
+  const [colorT, setColorT] = useState('black')
+///buttons 3
+///change color with click
+//h3
+
+
+function handleColorChange(newColor) {
+  setColorT(newColor)
+  console.log("click")
+}
+
   return (
     <div>
-      <Link exact to="/" style={{border:"red"}}>
+      <Link to="/" style={{border:"red"}}>
       <h1 className="ithds-header">IT Help Desk Ticket System</h1>
       </Link>
-      <NavBar/>
+      <NavBar colorT={colorT}/>
         <Switch>
-          <Route path="/computer">
+          <Route path="/addticket">
             <AddTicket />
           </Route>
 
@@ -29,7 +42,7 @@ function App() {
           </Route>
           
           <Route path="/cellphone">
-            <CellPhone />
+            <CellPhone handleColorChange={handleColorChange}/>
           </Route>
 
           <Route exact path="/employee">
@@ -37,7 +50,7 @@ function App() {
           </Route>
 
           <Route exact path="/employee/new">
-              <UserList/>
+              <EmployeeList/>
           </Route>
 
           <Route path="/restart">
