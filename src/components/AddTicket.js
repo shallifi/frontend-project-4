@@ -72,7 +72,7 @@ function AddTicket({onAddTicket}) {
       
        <h2 style={formStyle}>Common Issues</h2>
        <select className='drop-menu' style={formStyle}>
-        <option value="problem"></option>
+        <option>Select the Issue</option>
         <option value="problem">Password</option>
         <option value="problem">Printer</option>
         <option value="problem">Connection</option>
@@ -83,7 +83,8 @@ function AddTicket({onAddTicket}) {
 
        <h2 style={formStyle}>Devices</h2>
        <select className='drop-menu' style={formStyle}>
-        <option selected value="device">Computer</option>
+        <option>Select Device</option>
+        <option value="device">Computer</option>
         <option value="device">Cell Phone</option>
         <option value="device">Printer</option>
       </select>
