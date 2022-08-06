@@ -2,8 +2,6 @@ import { useState,useEffect } from "react";
 // import AddEmployee from "react";
 
 
-
-
 function EmployeeList() {
   const [employee, setEmployee] = useState([])
   

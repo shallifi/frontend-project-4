@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useHistory } from 'react-router-dom';
+// import { useForm } from "../hooks/useForm";
 
 
 
@@ -71,23 +72,32 @@ function AddTicket({onAddTicket}) {
         />
       
        <h2 style={formStyle}>Common Issues</h2>
-       <select className='drop-menu' style={formStyle}>
+       <select className='drop-menu' style={formStyle} >
         <option>Select the Issue</option>
         <option value="problem">Password</option>
         <option value="problem">Printer</option>
         <option value="problem">Connection</option>
         <option value="problem">Lost File</option>
         <option value="problem">Unlisted</option>
-
+           
       </select>
 
-       <h2 style={formStyle}>Devices</h2>
+       {/* <h2 style={formStyle}>Device</h2>
        <select className='drop-menu' style={formStyle}>
         <option>Select Device</option>
         <option value="device">Computer</option>
         <option value="device">Cell Phone</option>
         <option value="device">Printer</option>
-      </select>
+      </select> */}
+
+      <label style={formStyle}>Device</label>
+        <input type="*"
+        style={formStyle} 
+         name="devices" 
+        placeholder="What device is having the issue"
+        onChange={handleChange}
+        value={tickData.devices}
+        />
 
       {/* <label 
       style={formStyle}>Device</label>

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useHistory } from "react-router-dom";
-import UserList from "./EmployeeList";
+import EmployeeList from "./EmployeeList";
 
 
 function AddEmployee({onAddUser}) {
@@ -100,7 +100,7 @@ function AddEmployee({onAddUser}) {
         value={formData.phone}/>
 
         <button type="submit">Submit New Employee Information</button>
-      <UserList formData={formData} key={formData.name}/>
+      <EmployeeList formData={formData} key={formData.name}/>
       </div>
     </form>
   )
