@@ -1,6 +1,8 @@
 import React from 'react'
+import { useHistory } from 'react-router-dom';
 
-function TicketList() {
+
+function TicketList({onLogout}) {
 
   ///this is for the displaying of a ticket list
 
@@ -15,8 +17,20 @@ function TicketList() {
   //   );
   // });
 
+  const history = useHistory();
+
+  function handleLogout() {
+    fetch("/logout", {
+      method: "DELETE",
+    }).then(() => onLogout());
+    history.push("/login")
+  }
+
   return (
     <div>
+      <header>
+        <button onClick={handleLogout}>Logout</button>
+      </header>
         TicketList
 
         

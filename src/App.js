@@ -10,6 +10,7 @@ import Restart from "./components/Restart";
 import { useState } from "react";
 import EmployeeList from "./components/EmployeeList";
 import Login from "./components/page/Login";
+import SignUpForm from "./components/SignUpForm";
 
 
 
@@ -60,6 +61,9 @@ function handleColorChange(newColor) {
           
           <Route path="/login">
             <Login/>
+          </Route>
+          <Route path="/signup">
+            <SignUpForm/>
           </Route>
 
           <Route path="/*">

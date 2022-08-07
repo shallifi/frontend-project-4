@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 // import { Button, Error, Input, FormField, Label } from "../styles";
 
@@ -9,6 +10,8 @@ function LoginForm({ onLogin }) {
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+
+  const history = useHistory();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -27,6 +30,7 @@ function LoginForm({ onLogin }) {
         r.json().then((err) => setErrors(err.errors));
       }
     });
+    history.push('/ticketlist')
   }
 
   return (
