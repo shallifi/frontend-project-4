@@ -5,7 +5,7 @@ import EmployeeList from "./EmployeeList";
 
 function AddEmployee({onAddUser}) {
   
-  /// used for controlled form vvvvvv
+  /// used for controlled form 
   const [formData, setFormData] = useState ({
     
     name:"",
@@ -43,7 +43,7 @@ function AddEmployee({onAddUser}) {
       fetch(`http://localhost:3000/employees`, configObj)
         .then((resp) => resp.json())
         .then((userBlah) => {
-          // onAddUser(userBlah);
+          onAddUser(userBlah);
           setFormData({
             name:"",
             department:"", 
@@ -126,14 +126,4 @@ const formStyle = {
   // color:"black"
 }
 
-// const textArea = {
-//   margintop: "0.25rem",
-//   marginbottom: "1rem",
-//   padding: "0.5rem",
-//   border: "none",
-//   fontsize: "1.25rem",
-//   fontweight: "bold",
-//   transition: "all 0.3s",
-//   border: "2px solid var(--color)",
 
-// }

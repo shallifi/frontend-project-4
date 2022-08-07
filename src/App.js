@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import Restart from "./components/Restart";
 import { useState } from "react";
 import EmployeeList from "./components/EmployeeList";
+import Login from "./components/page/Login";
 
 
 
@@ -57,6 +58,10 @@ function handleColorChange(newColor) {
             <Restart/>
           </Route>
           
+          <Route path="/login">
+            <Login/>
+          </Route>
+
           <Route path="/*">
             <NotFound/>
           </Route>

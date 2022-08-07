@@ -17,11 +17,19 @@ function NavBar({colorT}) {
         activeStyle={{ background: "darkgreen", }}>
             <h3> Did you Restart?</h3>
           </NavLink>
+          
+        <NavLink to="/login" 
+        exact style={boxButtonStyle} 
+        activeStyle={{ background: "darkgreen", }}>
+            <h3> Tech login</h3>
+          </NavLink>
+
         <NavLink to="/addticket" 
         exact style={boxButtonStyle} 
         activeStyle={{ background: "darkgreen", }}>
             <h3> Add Ticket</h3>
         </NavLink>
+
         <NavLink to="/ticketlist" 
         exact style={boxButtonStyle} 
         activeStyle={{ background: "darkgreen", }}>
