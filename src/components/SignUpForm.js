@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import { Button, Error, Input, FormField, Label, Textarea } from "../styles";
+import { Button, Error, Input, FormField, Label, Textarea } from "../styles";
 
 function SignUpForm({ onLogin }) {
   const [username, setUsername] = useState("");
@@ -48,7 +48,7 @@ function SignUpForm({ onLogin }) {
           onChange={(e) => setUsername(e.target.value)}
         />
       </FormField>
-      
+
       <FormField>
         <Label htmlFor="password">Password</Label>
         <Input

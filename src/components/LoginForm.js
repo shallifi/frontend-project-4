@@ -1,5 +1,8 @@
 import React, { useState } from "react";
+import styled from "styled-components";
 // import { Button, Error, Input, FormField, Label } from "../styles";
+
+
 
 function LoginForm({ onLogin }) {
   const [username, setUsername] = useState("");
@@ -10,7 +13,7 @@ function LoginForm({ onLogin }) {
   function handleSubmit(e) {
     e.preventDefault();
     setIsLoading(true);
-    fetch("/login", {
+    fetch("http://127.0.0.1:3000/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -61,5 +64,51 @@ function LoginForm({ onLogin }) {
     </form>
   );
 }
+
+
+const FormField = styled.div`
+  &:not(:last-child) {
+    margin-bottom: 12px;
+  }
+`;
+
+const Label = styled.label`
+  color: #363636;
+  display: block;
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+`;
+
+const Input = styled.input`
+  border-radius: 6px;
+  border: 1px solid transparent;
+  border-color: #dbdbdb;
+  -webkit-appearance: none;
+  max-width: 100%;
+  width: 100%;
+  font-size: 1rem;
+  line-height: 1.5;
+  padding: 4px;
+`;
+
+const Button= styled.button`
+  cursor: pointer;
+  font-size: 1rem;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  padding: 8px 16px;
+  text-decoration: none;
+`;
+
+const Error = styled.span`
+  background-color: white;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  font-weight: bold;
+  display: grid;
+  place-content: center;
+`;
 
 export default LoginForm;
