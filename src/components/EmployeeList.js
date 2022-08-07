@@ -10,7 +10,7 @@ function EmployeeList() {
 
     //useEffect renders once per loading the page
     useEffect(() => {
-        fetch(`http://localhost:3000/users`)
+        fetch(`http://localhost:3000/employees`)
           .then((res) => res.json())
           .then((data) => setEmployee(data));
       }, []);
@@ -21,7 +21,7 @@ function EmployeeList() {
     //     setNewUserListItem((newUserListItem) => [...newUserListItem, newUser]);
     //   };  
     
-    console.log("useEffect working", employee)
+    // console.log("useEffect working", employee)
     const displayEmploy = employee.map((empShown) => {
         return <p className="emp-list" 
           key={empShown.id}>
@@ -38,7 +38,7 @@ function EmployeeList() {
 
           </p>; 
       });
-      console.log("displayEmploy",displayEmploy)
+      // console.log("displayEmploy",displayEmploy)
 ///////////////
     // const awesome = employee.map((emplStats) => (
     //   <li key={emplStats.id}

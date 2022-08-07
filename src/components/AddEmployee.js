@@ -40,10 +40,10 @@ function AddEmployee({onAddUser}) {
       },
       body: JSON.stringify({ ...formData }),
     };
-      fetch(`http://localhost:3000/users`, configObj)
+      fetch(`http://localhost:3000/employees`, configObj)
         .then((resp) => resp.json())
         .then((userBlah) => {
-          onAddUser(userBlah);
+          // onAddUser(userBlah);
           setFormData({
             name:"",
             department:"", 
