@@ -4,34 +4,57 @@ import styled from "styled-components";
 
 function SignUpForm({ onLogin }) {
   const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [errors, setErrors] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    setErrors([]);
-    setIsLoading(true);
-    fetch("http://127.0.0.1:3000/signup", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        username,
+  // function handleSubmit(e) {
+  //   e.preventDefault();
+  //   setErrors([]);
+  //   setIsLoading(true);
+  //   fetch('http://127.0.0.1:3000/teches', {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify({
+  //       username,
+  //       email,
+  //       password,
+  //       password_confirmation: passwordConfirmation      
+  //     }),
+  //   }).then((r) => {
+  //     setIsLoading(false);
+  //     if (r.ok) {
+  //       r.json().then((username) => onLogin(username));
+  //     } else {
+  //       r.json().then((err) => setErrors(err.errors));
+  //     } 
+  //   });
+  // }
+
+  function handleSubmit(e){
+    e.preventDefault()
+    const user = {
+        name: username,
+        email,
         password,
-        password_confirmation: passwordConfirmation      
-      }),
-    }).then((r) => {
-      setIsLoading(false);
-      if (r.ok) {
-        r.json().then((user) => onLogin(user));
-      } else {
-        r.json().then((err) => setErrors(err.errors));
-      }
-    });
-  }
+        password_confirmation: passwordConfirmation
+    }
+   
+    fetch('http://127.0.0.1:3000/teches',{
+      method:'POST',
+      headers:{'Content-Type': 'application/json'},
+      body:JSON.stringify(user)
+    })
+    .then(res => res.json())
+    .then(json => {
+        if(json.errors) setErrors(Object.entries(json.errors))
+        else alert("Thanks for logging in, please refresh the page to check out the sessions magic :)")
+    })
+}
 
   return (
     <form onSubmit={handleSubmit}>
@@ -43,6 +66,17 @@ function SignUpForm({ onLogin }) {
           autoComplete="off"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
+        />
+      </FormField>
+
+      <FormField>
+        <Label htmlFor="email">Email</Label>
+        <Input
+          type="text"
+          id="email"
+          autoComplete="off"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
       </FormField>
 
@@ -70,7 +104,7 @@ function SignUpForm({ onLogin }) {
    
 
       <FormField>
-        <Button type="submit">{isLoading ? "Loading..." : "Sign Up"}</Button>
+        <Button type="submit">SIGN up </Button>
       </FormField>
       <FormField>
         {errors.map((err) => (
@@ -88,7 +122,7 @@ const FormField = styled.div`
 `;
 
 const Label = styled.label`
-  color: #363636;
+  color: lightgreen;
   display: block;
   font-size: 1rem;
   font-weight: 700;
@@ -100,7 +134,7 @@ const Input = styled.input`
   border: 1px solid transparent;
   border-color: #dbdbdb;
   -webkit-appearance: none;
-  max-width: 100%;
+  max-width: 500px;
   width: 100%;
   font-size: 1rem;
   line-height: 1.5;

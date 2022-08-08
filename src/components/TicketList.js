@@ -1,24 +1,47 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom';
+
+
 
 
 function TicketList({onLogout}) {
 
-  ///this is for the displaying of a ticket list
+  const[ticket, setTicket] = useState([])
 
-  // const projectItems = searchResults.map((project) => {
-  //   return (
-  //     <ProjectListItem
-  //       key={project.id}
-  //       project={project}
-  //       enterProjectEditModeFor={enterProjectEditModeFor}
-  //       onDeleteProject={onDeleteProject}
-  //     />
-  //   );
-  // });
+      //useEffect renders once per loading the page
+      useEffect(() => {
+        fetch(`http://localhost:3000/tickets`)
+          .then((res) => res.json())
+          .then((data) => setTicket(data));
+      }, []);
 
   const history = useHistory();
 
+  // map to display tickets
+  const displayTicket = ticket.map((tickShown)=> {
+    return <p className='tick-list'
+    key={tickShown.id}>
+        {tickShown.name},
+        {tickShown.common_issues},
+        {tickShown.devices},
+        {tickShown.description}
+        <button onClick={()=>handleDelete(tickShown.id)}>Close Ticket</button>
+      
+    </p>
+  })
+
+  // handle delete of ticket
+
+
+function handleDelete(id){
+  console.log(id)
+  fetch(`http://127.0.0.1:3000/tickets/${id}`, {
+      method: "DELETE", 
+     
+  })
+}
+
+  // handles logging out
   function handleLogout() {
     fetch("/logout", {
       method: "DELETE",
@@ -32,6 +55,9 @@ function TicketList({onLogout}) {
         <button onClick={handleLogout}>Logout</button>
       </header>
         TicketList
+        <ul>
+          {displayTicket} 
+        </ul>
 
         
     </div>

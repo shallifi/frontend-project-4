@@ -1,7 +1,9 @@
 import { useState } from "react";
 import styled from "styled-components";
 import LoginForm from "../LoginForm";
+import SignUpForm from "../SignUpForm";
 // import {Button} from "../styles";
+
 
 
 function Login({ onLogin }) {
@@ -23,7 +25,7 @@ function Login({ onLogin }) {
         </>
       ) : (
         <>
-          {/* <SignUpForm onLogin={onLogin} /> */}
+          <SignUpForm onLogin={onLogin} />
           <Divider />
           <p>
             Already have an account? &nbsp;

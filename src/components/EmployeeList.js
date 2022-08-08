@@ -5,8 +5,7 @@ import { useState,useEffect } from "react";
 function EmployeeList() {
   const [employee, setEmployee] = useState([])
   
-  // const {name, department, manager, title, phone } = employee;
-    // console.log("userList",formData)
+
 
     //useEffect renders once per loading the page
     useEffect(() => {
@@ -15,13 +14,7 @@ function EmployeeList() {
           .then((data) => setEmployee(data));
       }, []);
     
-    // const [newUserListItem, setNewUserListItem] = useState({})
-        
-    // const onAddUser = (newUser) => {
-    //     setNewUserListItem((newUserListItem) => [...newUserListItem, newUser]);
-    //   };  
-    
-    // console.log("useEffect working", employee)
+
     const displayEmploy = employee.map((empShown) => {
         return <p className="emp-list" 
           key={empShown.id}>
@@ -38,22 +31,7 @@ function EmployeeList() {
 
           </p>; 
       });
-      // console.log("displayEmploy",displayEmploy)
-///////////////
-    // const awesome = employee.map((emplStats) => (
-    //   <li key={emplStats.id}
-    //   emplStats={emplStats}>
-    //   </li>))      
 
-    // console.log("trying to get",awesome)
-
-    //  function displayEmp() {
-    //    return employee.map((emplStats) => (
-    //    <li key={emplStats.id}
-    //    emplStats={emplStats}>
-    //    </li>              
-    //    ))
-    //  } 
 
 return (
     <div >
