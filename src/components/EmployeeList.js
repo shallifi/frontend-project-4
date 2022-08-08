@@ -42,10 +42,7 @@ return (
           </ul>
          
         <h2>
-          {/* {awesome} */}
-          {/* {employee.department.map((dept)=>
-          <li key={dept}>{dept}</li>)} */}
-           
+    
         </h2>
     
      

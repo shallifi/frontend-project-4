@@ -38,7 +38,7 @@ function SignUpForm({ onLogin }) {
   function handleSubmit(e){
     e.preventDefault()
     const user = {
-        name: username,
+        username,
         email,
         password,
         password_confirmation: passwordConfirmation
@@ -52,7 +52,7 @@ function SignUpForm({ onLogin }) {
     .then(res => res.json())
     .then(json => {
         if(json.errors) setErrors(Object.entries(json.errors))
-        else alert("Thanks for logging in, please refresh the page to check out the sessions magic :)")
+        else alert("Success")
     })
 }
 

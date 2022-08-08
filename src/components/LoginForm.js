@@ -25,7 +25,7 @@ function LoginForm({ onLogin }) {
     }).then((r) => {
       setIsLoading(false);
       if (r.ok) {
-        r.json().then((user) => onLogin(user));
+        r.json().then((user) => setUsername(user));
       } else {
         r.json().then((err) => setErrors(err.errors));
       }
@@ -108,7 +108,7 @@ const Button= styled.button`
 const Error = styled.span`
   background-color: white;
   height: 30px;
-  width: 30px;
+  width: 100px;
   border-radius: 50%;
   font-weight: bold;
   display: grid;
