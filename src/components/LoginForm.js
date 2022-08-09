@@ -5,9 +5,10 @@ import styled from "styled-components";
 
 
 
-function LoginForm({ onLogin }) {
+function LoginForm( ) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -21,11 +22,11 @@ function LoginForm({ onLogin }) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ username, password }),
+      body: JSON.stringify({ username, email, password }),
     }).then((r) => {
       setIsLoading(false);
       if (r.ok) {
-        r.json().then((user) => setUsername(user));
+        r.json().then((username) => {setUsername(username);setPassword(password);setEmail(email)});
         // alert("welcome")
       } else {
         r.json().then((err) => setErrors(err.errors));

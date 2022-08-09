@@ -4,16 +4,45 @@ import { useHistory, useParams } from 'react-router-dom';
 
 
 
-function TicketList({onLogout}) {
+function TicketList() {
 
   const[tickData, setTickData] = useState([])
 
+  // const [tickets, setTickets] = useState([])
+  // const [isAuthenticated, setIsAuthenticated] = useState(false);
+  // const [tech, setTech] = useState(null);
       //useEffect renders once per loading the page
       useEffect(() => {
         fetch(`http://localhost:3000/tickets`)
           .then((res) => res.json())
           .then((data) => setTickData(data));
       }, []);
+
+
+// useEffect(() => {
+//   fetch("/login")
+//   .then((res) => {
+//     if(res.ok) {
+//       res.json()
+//       .then((tech) => {
+//         console.log(tech)
+//         setIsAuthenticated(true);
+//         setTech(tech);
+//       })
+//       .then(()=> {
+//         fetch('/tickets')
+//         .then(res => res.json())
+//         .then(tickets => {
+//           setTickets(tickets)
+//         });
+//       })
+//     }
+//     else alert("you are not logged in please try again")
+//   });
+
+  
+// },[]);
+// if (!isAuthenticated) return <Login error={'please login'} setIsAuthenticated={setIsAuthenticated} setTech={setTech} />;
 
   const history = useHistory();
   const { id } = useParams();
@@ -33,7 +62,7 @@ function TicketList({onLogout}) {
   })
 
   // handle edit of ticket
-  const handleEdit = (e)=> {
+  const handleEdit = ()=> {
     // e.preventDefault();
     const configObj = {
       method: "PUT",
@@ -45,7 +74,7 @@ function TicketList({onLogout}) {
     };
       fetch(`http://127.0.0.1:3000/tickets/${id}`, configObj)
         .then((resp) => resp.json())
-        .then((tickInfo) => {
+        .then((setTickData) => {
           // onAddTicket(tickInfo);
           setTickData({
             id:"",
@@ -77,12 +106,12 @@ function handleDelete(id){
   function handleLogout() {
     fetch("/logout", {
       method: "DELETE",
-    }).then(() => onLogout());
+    }) }
     history.push("/login")
-  }
+  
 
   return (
-    <div>
+    <div >
       <header>
         <button onClick={handleLogout}>Logout</button>
       </header>

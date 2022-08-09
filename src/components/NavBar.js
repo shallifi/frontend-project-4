@@ -5,11 +5,11 @@ import { NavLink } from 'react-router-dom';
 
 
 
-function NavBar({colorT}) {
+function NavBar() {
   return (
       <>
     <div className="nav">
-        <h3 className="project-title" style={{color:colorT}}>NavBar</h3>
+        <h3 className="project-title">NavBar</h3>
         
 
         <NavLink to="/restart" 

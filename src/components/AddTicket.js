@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 
 
 
-function AddTicket({onAddTicket}) {
+function AddTicket() {
 
   ///setting a controlled form by using useState
   const [tickData,setTickData] = useState({
@@ -40,7 +40,7 @@ function AddTicket({onAddTicket}) {
     };
       fetch('http://127.0.0.1:3000/tickets', configObj)
         .then((resp) => resp.json())
-        .then((tickInfo) => {
+        .then((setTickData) => {
           // onAddTicket(tickInfo);
           setTickData({
             common_issues:"",
@@ -149,5 +149,6 @@ const submitButton = {
   display: "flex",
   flexdirection: "column",
   alignitems: "center",
+  
   
 }

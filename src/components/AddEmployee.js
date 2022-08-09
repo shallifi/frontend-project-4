@@ -1,9 +1,10 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import EmployeeList from "./EmployeeList";
 
 
-function AddEmployee({onAddUser}) {
+
+function AddEmployee() {
   
   /// used for controlled form 
   const [formData, setFormData] = useState ({
@@ -42,8 +43,8 @@ function AddEmployee({onAddUser}) {
     };
       fetch(`http://localhost:3000/employees`, configObj)
         .then((resp) => resp.json())
-        .then((userBlah) => {
-          onAddUser(userBlah);
+        .then((setFormData) => {
+          // onAddUser(userBlah);
           setFormData({
             name:"",
             department:"", 

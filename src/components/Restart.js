@@ -10,7 +10,7 @@ function Restart() {
   
   function handleClick(){
   //  "no"=== true ? 
-  };
+  }
 
 
   return (

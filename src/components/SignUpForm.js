@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 // import { Button, Error, Input, FormField, Label,  } from "../styles";
 
-function SignUpForm({ onLogin }) {
+function SignUpForm() {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
