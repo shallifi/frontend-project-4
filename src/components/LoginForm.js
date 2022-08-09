@@ -26,6 +26,7 @@ function LoginForm({ onLogin }) {
       setIsLoading(false);
       if (r.ok) {
         r.json().then((user) => setUsername(user));
+        // alert("welcome")
       } else {
         r.json().then((err) => setErrors(err.errors));
       }

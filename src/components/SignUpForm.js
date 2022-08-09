@@ -1,5 +1,7 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import styled from "styled-components";
+
 // import { Button, Error, Input, FormField, Label,  } from "../styles";
 
 function SignUpForm({ onLogin }) {
@@ -34,6 +36,7 @@ function SignUpForm({ onLogin }) {
   //     } 
   //   });
   // }
+  const history = useHistory();
 
   function handleSubmit(e){
     e.preventDefault()
@@ -53,6 +56,7 @@ function SignUpForm({ onLogin }) {
     .then(json => {
         if(json.errors) setErrors(Object.entries(json.errors))
         else alert("Success")
+        history.push('/ticketlist')
     })
 }
 

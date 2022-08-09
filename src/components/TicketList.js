@@ -64,7 +64,7 @@ function TicketList({onLogout}) {
 
   // handle delete of ticket
 function handleDelete(id){
-  console.log(id)
+  // console.log(id)
   fetch(`http://127.0.0.1:3000/tickets/${id}`, {
       method: "DELETE", 
      

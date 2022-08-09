@@ -13,9 +13,6 @@ import Login from "./components/page/Login";
 import SignUpForm from "./components/SignUpForm";
 
 
-
-
-
 function App() {
   const [colorT, setColorT] = useState('black')
 ///buttons 3
@@ -62,6 +59,7 @@ function handleColorChange(newColor) {
           <Route path="/login">
             <Login/>
           </Route>
+
           <Route path="/signup">
             <SignUpForm/>
           </Route>

@@ -1,13 +1,19 @@
 import { useState } from "react";
+import { useHistory } from "react-router-dom";
 import styled from "styled-components";
 import LoginForm from "../LoginForm";
 import SignUpForm from "../SignUpForm";
+
 // import {Button} from "../styles";
 
 
 
 function Login({ onLogin }) {
   const [showLogin, setShowLogin] = useState(true);
+
+  const history = useHistory();
+
+  const handleClickToSignUp = () => history.push('/signup');
 
   return (
     <Wrapper>
@@ -18,9 +24,10 @@ function Login({ onLogin }) {
           <Divider />
           <p>
             Don't have an account? &nbsp;
-            <Button color="secondary" onClick={() => setShowLogin(false)}>
+            <Button color="secondary" onClick={handleClickToSignUp}>
               Sign Up
             </Button>
+              {/* <SignUpForm /> */}
           </p>
         </>
       ) : (
