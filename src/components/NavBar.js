@@ -1,11 +1,20 @@
 // import { hover } from '@testing-library/user-event/dist/hover';
 import React from 'react'
 import { NavLink } from 'react-router-dom';
+import styled from 'styled-components';
 // import { Link } from 'react-router-dom'
 
 
 
-function NavBar() {
+
+function NavBar({ tech, setTech }) {
+  function handleLogoutClick() {
+    fetch("/logout", { method: "DELETE" }).then((r) => {
+      if (r.ok) {
+        setTech(null);
+      }
+    });
+  }
   return (
       <>
     <div className="nav">
@@ -48,6 +57,9 @@ function NavBar() {
         activeStyle={{ background: "darkgreen", }}
         >
             <h3>Employee List</h3>
+            <Button variant="outline" onClick={handleLogoutClick}>
+          Logout
+        </Button>
         </NavLink>
     </div>
     </>

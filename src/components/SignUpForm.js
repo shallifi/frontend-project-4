@@ -40,7 +40,7 @@ function SignUpForm() {
 
   function handleSubmit(e){
     e.preventDefault()
-    const user = {
+    const tech = {
         username,
         email,
         password,
@@ -50,7 +50,7 @@ function SignUpForm() {
     fetch('http://127.0.0.1:3000/teches',{
       method:'POST',
       headers:{'Content-Type': 'application/json'},
-      body:JSON.stringify(user)
+      body:JSON.stringify(tech)
     })
     .then(res => res.json())
     .then(json => {

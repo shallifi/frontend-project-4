@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { useHistory, useParams } from 'react-router-dom';
+import {  Switch, useHistory, useParams } from 'react-router-dom';
+import Login from './page/Login';
+
 
 
 
@@ -9,40 +11,41 @@ function TicketList() {
   const[tickData, setTickData] = useState([])
 
   // const [tickets, setTickets] = useState([])
-  // const [isAuthenticated, setIsAuthenticated] = useState(false);
-  // const [tech, setTech] = useState(null);
-      //useEffect renders once per loading the page
-      useEffect(() => {
-        fetch(`http://localhost:3000/tickets`)
-          .then((res) => res.json())
-          .then((data) => setTickData(data));
-      }, []);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [tech, setTech] = useState(null);
+
+      //useEffect original before auth renders once per loading the page
+      // useEffect(() => {
+      //   fetch(`http://localhost:3000/tickets`)
+      //     .then((res) => res.json())
+      //     .then((data) => setTickData(data));
+      // }, []);
 
 
-// useEffect(() => {
-//   fetch("/login")
-//   .then((res) => {
-//     if(res.ok) {
-//       res.json()
-//       .then((tech) => {
-//         console.log(tech)
-//         setIsAuthenticated(true);
-//         setTech(tech);
-//       })
-//       .then(()=> {
-//         fetch('/tickets')
-//         .then(res => res.json())
-//         .then(tickets => {
-//           setTickets(tickets)
-//         });
-//       })
-//     }
-//     else alert("you are not logged in please try again")
-//   });
+useEffect(() => {
+  fetch("/login")
+  .then((res) => {
+    if(res.ok) {
+      res.json()
+      .then((tech) => {
+        console.log(tech)
+        setIsAuthenticated(true);
+        setTech(tech);
+      })
+      .then(()=> {
+        fetch('/tickets')
+        .then(res => res.json())
+        .then(tickets => {
+          setTickData(tickets)
+        });
+      })
+    }
+    else alert("you are not logged in please try again")
+  });
 
   
-// },[]);
-// if (!isAuthenticated) return <Login error={'please login'} setIsAuthenticated={setIsAuthenticated} setTech={setTech} />;
+},[]);
+if (!isAuthenticated) return <Login error={'please login'} setIsAuthenticated={setIsAuthenticated} setTech={setTech} />;
 
   const history = useHistory();
   const { id } = useParams();
@@ -82,9 +85,6 @@ function TicketList() {
             devices: "" ,
             name:"" ,
             description:"" 
-            // tech:"" ,
-            // solution:"" ,
-            // status: ""
         });
       });
       history.push(`/addticket/${id}`)
@@ -111,7 +111,8 @@ function handleDelete(id){
   
 
   return (
-    <div >
+    <Switch>
+    <div setIsAuthenticated={setIsAuthenticated} setTech={setTech} tech={tech}>
       <header>
         <button onClick={handleLogout}>Logout</button>
       </header>
@@ -119,9 +120,12 @@ function handleDelete(id){
         <ul>
           {displayTicket} 
         </ul>
-
+        {/* <Route path="/login">
+          <Login />
+    </Route> */}
         
     </div>
+    </Switch>
   )
 }
 

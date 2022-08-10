@@ -3,7 +3,7 @@ import NavBar from "./components/NavBar";
 import NotFound from "./components/NotFound";
 import AddEmployee from "./components/AddEmployee";
 import AddTicket from "./components/AddTicket";
-import CellPhone from "./components/CellPhone";
+// import CellPhone from "./components/CellPhone";
 import TicketList from "./components/TicketList";
 import { Link } from "react-router-dom";
 import Restart from "./components/Restart";
@@ -11,12 +11,25 @@ import Restart from "./components/Restart";
 import EmployeeList from "./components/EmployeeList";
 import Login from "./components/page/Login";
 import SignUpForm from "./components/SignUpForm";
-import React from "react";
+import React, { useEffect, useState } from "react";
+
 
 
 
 
 function App() {
+  const [tech, setTech] = useState(null);
+
+  useEffect(() => {
+    // auto-login
+    fetch("/me").then((r) => {
+      if (r.ok) {
+        r.json().then((tech) => setTech(tech));
+      }
+    });
+  }, []);
+
+  if (!tech) return <Login onLogin={setTech} />;
   // const [tickets, setTickets] = useState([])
   // const [colorT, setColorT] = useState('black')
 ///buttons 3
@@ -46,7 +59,7 @@ function App() {
       <Link to="/" style={{border:"red"}}>
       <h1 className="ithds-header">IT Help Desk Ticket System</h1>
       </Link>
-      <NavBar />
+      <NavBar  tech={tech} setTech={setTech} />
       {/* colorT={colorT} */}
       {/* setIsAuthenticated={setIsAuthenticated} setTech={setTech} tech={tech} */}
         <Switch>
@@ -59,10 +72,10 @@ function App() {
             {/* tickets={tickets} */}
           </Route>
           
-          <Route path="/cellphone">
-            <CellPhone />
+          {/* <Route path="/cellphone">
+            <CellPhone /> */}
             {/* handleColorChange={handleColorChange} */}
-          </Route>
+          {/* </Route> */}
 
           <Route exact path="/employee">
             <AddEmployee/>
